@@ -1,11 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
@@ -20,28 +17,27 @@ const StyledBadge1 = withStyles(theme => ({
 }))(Badge);
 
 const useStyles = makeStyles({
-    card: {
-      flex:1
-    },
-  });
+  card: {
+    flex: 1
+  },
+});
 
-
-const Header = (props) => {  
-    const classes = useStyles();
-    return(
-      <>
+const Header = (props) => {
+  const classes = useStyles();
+  return (
+    <div>
       <div><h1 className='App'> My shop</h1></div>
-    <Card className={classes.card}>
-    <CardActions>
-    <Link to="/">Home</Link>
-    <Link to="/cart"> <IconButton aria-label="cart">
-          <StyledBadge1 badgeContent={props.amountAll} color="primary">
-            <ShoppingCartIcon />
-          </StyledBadge1>
-        </IconButton></Link>
-    </CardActions>
-  </Card>
-  </>)
+      <Card className={classes.card}>
+        <CardActions>
+          <Link to="/">Home</Link>
+          <Link to="/cart"> <IconButton aria-label="cart">
+            <StyledBadge1 badgeContent={props.amountAll} color="primary">
+              <ShoppingCartIcon />
+            </StyledBadge1>
+          </IconButton></Link>
+        </CardActions>
+      </Card>
+    </div>)
 }
 
 export default Header;

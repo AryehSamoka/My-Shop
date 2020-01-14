@@ -3,9 +3,7 @@ import './App.css';
 import Header from './Header';
 import Products, { initialProducts } from './Products';
 import Cart from './Cart';
-import {BrowserRouter as Router,  Switch,  Route,} 
-  from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 
 const App = () => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -39,11 +37,11 @@ const App = () => {
     } else {
       setCartProducts([...cartProducts, { ...item, amount: 1 }]);
     }
-    setAmountAll(amountAll+1);
+    setAmountAll(amountAll + 1);
   }
 
   const removeItem = (item) => {
-    setAmountAll(amountAll-item.amount);
+    setAmountAll(amountAll - item.amount);
     let index;
     cartProducts.forEach((el, ind) => {
       if (el.id === item.id) {
@@ -56,20 +54,19 @@ const App = () => {
   }
 
   return (
-      <Router>
-      <Header amountAll={amountAll}/>
-        <Switch>
-          <Route exact path={["/",'/addProduct']}>
+    <Router>
+      <div><Header amountAll={amountAll} /></div><br></br>
+      <Switch>
+        <Route exact path={["/", '/addProduct']}>
           <Products addProduct={addProduct} products={products} addItem={addItem}></Products>
-          </Route>
-          <Route path="/cart">
+        </Route>
+        <Route path="/cart">
           <Cart removeItem={removeItem} products={cartProducts}></Cart>
-          </Route>
-          <Route path="/*">404</Route>
-        </Switch>
-      </Router>
-    // </div>
-  );
+        </Route>
+        <Route path="/*">404</Route>
+      </Switch>
+    </Router>
+  )
 }
 
 export default App;

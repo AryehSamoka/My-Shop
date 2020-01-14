@@ -16,66 +16,60 @@ const useStyles = makeStyles({
 });
 
 const AddProduct = (props) => {
-    const [title1,setTitle] = useState('');
-    const [url1,setUrl] = useState('');
-    const [price1,setPrice] = useState(0);
+    const [title1, setTitle] = useState('');
+    const [url1, setUrl] = useState('');
+    const [price1, setPrice] = useState(0);
     const history = useHistory();
 
     const handleChangeTitle = (event) => {
         setTitle(event.target.value);
-      }
+    }
     const handleChangeUrl = (event) => {
         setUrl(event.target.value);
-      }
+    }
     const handleChangePrice = (event) => {
         setPrice(event.target.value);
-      }
+    }
 
     const handleSubmit = (event) => {
-        const item ={title:title1, url:url1, price:price1};
-        
+        const item = { title: title1, url: url1, price: price1 };
+
         props.addProduct(item);
 
         history.push('/');
-        
+
         event.preventDefault();
-      }
-    
-        
+    }
 
     const classes = useStyles();
     return (<Card className={classes.card}>
         <CardActionArea>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                    
-        </Typography>
+
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                Please insert product details
+                    Please insert product details
                 </Typography>
             </CardContent>
         </CardActionArea>
         <CardActions>
-        <fieldset>
-            <form onSubmit={handleSubmit}>
-                <label>title
-                <input value={title1} onChange={handleChangeTitle}  type='text'></input>
-                </label><br></br>
-                <label>url
+            <fieldset>
+                <form onSubmit={handleSubmit}>
+                    <label>title
+                <input value={title1} onChange={handleChangeTitle} type='text'></input>
+                    </label><br></br>
+                    <label>url
                 <input value={url1} onChange={handleChangeUrl} type='text'></input>
-                </label><br></br>
-                <label>price
+                    </label><br></br>
+                    <label>price
                 <input value={price1} onChange={handleChangePrice} type='number'></input>
-                </label><br></br>
-                <input type='submit' value='submit'></input>
-            </form>
+                    </label><br></br>
+                    <input type='submit' value='submit'></input>
+                </form>
             </fieldset>
         </CardActions>
     </Card>)
 }
 
-
 export default AddProduct;
-
-
-

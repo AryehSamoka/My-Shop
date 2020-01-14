@@ -7,49 +7,55 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
-    card: {
-      width:300,
-    },
-    media: {
-      width:140,
-      height: 140,
-    },
-  });
+  paper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }, card: {
+    width: 300,
+    height: 400,
+  },
+  media: {
+    width: 180,
+    height: 220,
+  },
 
-const Product = (props) =>{
+});
+
+const Product = (props) => {
   const classes = useStyles();
-    return(<Card className={classes.card}>
-    <CardActionArea>
-      <CardMedia
-        className={classes.media}
-        component="img"
-        image={props.item.url}
-        title={props.item.title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {props.item.title}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          ${props.item.price}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          amount = {props.item.amount}
-        </Typography>
-      </CardContent>
-    </CardActionArea>
-    <CardActions>
-      <Button onClick={() => props.removeItem(props.item)} size="small" color="primary">
-        remove from basket
+  return (
+    <Paper elevation={3} className={classes.paper}>
+      <Card className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            component="img"
+            image={props.item.url}
+            title={props.item.title}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.item.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              ${props.item.price}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              amount = {props.item.amount}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button onClick={() => props.removeItem(props.item)} size="small" color="primary">
+            remove from basket
       </Button>
-    </CardActions>
-  </Card>)
+        </CardActions>
+      </Card>
+    </Paper>)
 }
 
-
 export default Product;
-
-
-
